@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reliable Cleaning Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with Logo */
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cta-header {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            padding: 10px 24px;
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-header {
+            padding: 10px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-header:hover {
+            background: #1e40af;
+            transform: translateY(-1px);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .lang-switcher button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .lang-switcher button.active {
+            color: #2563eb;
+        }
+
+        .lang-switcher button:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+            color: white;
+            padding: 100px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #2563eb;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        .hero-features {
+            margin-top: 40px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Trust Strip */
+        .trust-strip {
+            background: linear-gradient(to right, #f8fafc, #f1f5f9, #f8fafc);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .trust-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .trust-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #1e293b;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            border-color: #2563eb;
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .icon {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .step p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us */
+        .benefits {
+            background: #f8fafc;
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 20px 45px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            background: #20BA5A;
+        }
+
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: #1e293b;
+            padding: 20px 45px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s;
+        }
+
+        .btn-call:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .urgency-text {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .trust-strip span {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">✨</div>
+                    <span data-en="SparkleClean" data-nl="SparkleClean">SparkleClean</span>
+                </a>
+                <div class="cta-header">
+                    <a href="tel:+31612345678" class="btn-secondary">
+                        <span data-en="☎ Call Now" data-nl="☎ Bel Nu">☎ Call Now</span>
+                    </a>
+                    <a href="#cta" class="btn-header" data-en="Get Quote" data-nl="Offerte Aanvragen">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button onclick="setLanguage('en')" id="lang-en" class="active">EN</button>
+        <button onclick="setLanguage('nl')" id="lang-nl">NL</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-en="Your Space. Spotlessly Clean. Effortlessly Booked." data-nl="Uw Ruimte. Kraakhelder Schoon. Moeiteloos Geboekt.">Your Space. Spotlessly Clean. Effortlessly Booked.</h1>
+                <p data-en="Professional cleaning services in The Hague & surroundings. Book in 2 minutes, relax in hours." data-nl="Professionele schoonmaakdiensten in Den Haag en omgeving. Boek in 2 minuten, ontspan in uren.">Professional cleaning services in The Hague & surroundings. Book in 2 minutes, relax in hours.</p>
+                <div class="hero-cta">
+                    <a href="#cta" class="btn-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                        </svg>
+                        <span data-en="Get Instant Quote" data-nl="Ontvang Direct Offerte">Get Instant Quote</span>
+                    </a>
+                    <a href="https://wa.me/31612345678" class="btn-outline">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span data-en="Chat on WhatsApp" data-nl="Chat via WhatsApp">Chat on WhatsApp</span>
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span data-en="Same-day available" data-nl="Zelfde dag beschikbaar">Same-day available</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span data-en="Satisfaction guarantee" data-nl="Tevredenheidsgarantie">Satisfaction guarantee</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span data-en="No hidden fees" data-nl="Geen verborgen kosten">No hidden fees</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="trust-strip">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <div class="trust-number">500+</div>
+                    <div class="trust-label" data-en="Happy Clients" data-nl="Tevreden Klanten">Happy Clients</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">4.9★</div>
+                    <div class="trust-label" data-en="Average Rating" data-nl="Gemiddelde Beoordeling">Average Rating</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">24h</div>
+                    <div class="trust-label" data-en="Response Time" data-nl="Reactietijd">Response Time</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Cleaning Services" data-nl="Onze Schoonmaakdiensten">Our Cleaning Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🧹</div>
+                    <h3 data-en="Residential Cleaning" data-nl="Woningschoonmaak">Residential Cleaning</h3>
+                    <p data-en="Regular, deep, and move-in/move-out cleaning for homes and apartments. Customized to your needs." data-nl="Regelmatige, grondige en verhuisschoonmaak voor woningen en appartementen. Op maat gemaakt.">Regular, deep, and move-in/move-out cleaning for homes and apartments. Customized to your needs.</p>
+                    <a href="#cta" class="service-link" data-en="Book now →" data-nl="Boek nu →">Book now →</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🏢</div>
+                    <h3 data-en="Office & Commercial" data-nl="Kantoor & Bedrijven">Office & Commercial</h3>
+                    <p data-en="Keep your workspace clean, fresh, and professional. Daily, weekly, or monthly packages available." data-nl="Houd uw werkruimte schoon, fris en professioneel. Dagelijkse, wekelijkse of maandelijkse pakketten.">Keep your workspace clean, fresh, and professional. Daily, weekly, or monthly packages available.</p>
+                    <a href="#cta" class="service-link" data-en="Get quote →" data-nl="Offerte aanvragen →">Get quote →</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📦</div>
+                    <h3 data-en="Move-In / Move-Out" data-nl="Verhuisschoonmaak">Move-In / Move-Out</h3>
+                    <p data-en="Perfect for tenants, landlords, and property managers. Thorough cleaning for smooth transitions." data-nl="Perfect voor huurders, verhuurders en vastgoedbeheerders. Grondige schoonmaak voor soepele overgangen.">Perfect for tenants, landlords, and property managers. Thorough cleaning for smooth transitions.</p>
+                    <a href="#cta" class="service-link" data-en="Learn more →" data-nl="Meer info →">Learn more →</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">✨</div>
+                    <h3 data-en="Deep Cleaning" data-nl="Grote Schoonmaak">Deep Cleaning</h3>
+                    <p data-en="Detailed cleaning for kitchens, bathrooms, and high-traffic areas. Tackle the toughest dirt and grime." data-nl="Gedetailleerde schoonmaak voor keukens, badkamers en drukke ruimtes. Pak het hardnekkigste vuil aan.">Detailed cleaning for kitchens, bathrooms, and high-traffic areas. Tackle the toughest dirt and grime.</p>
+                    <a href="#cta" class="service-link" data-en="Schedule now →" data-nl="Plan nu →">Schedule now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-en="How It Works" data-nl="Hoe Het Werkt">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-en="Request a Quote" data-nl="Vraag een Offerte Aan">Request a Quote</h3>
+                    <p data-en="Tell us what type of cleaning you need." data-nl="Vertel ons welk type schoonmaak u nodig heeft.">Tell us what type of cleaning you need.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-en="We Schedule Your Cleaning" data-nl="Wij Plannen Uw Schoonmaak">We Schedule Your Cleaning</h3>
+                    <p data-en="Choose a time that works best for you." data-nl="Kies een tijd die het beste bij u past.">Choose a time that works best for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-en="We Get It Done" data-nl="Wij Regelen Het">We Get It Done</h3>
+                    <p data-en="Enjoy a clean, fresh space — without the stress." data-nl="Geniet van een schone, frisse ruimte — zonder de stress.">Enjoy a clean, fresh space — without the stress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title" data-en="Why Choose Us" data-nl="Waarom Voor Ons Kiezen">Why Choose Us</h2>
+            <div class="benefits-list">
+                <div class="benefit-item" data-en="✓ Experienced and reliable cleaners" data-nl="✓ Ervaren en betrouwbare schoonmakers">✓ Experienced and reliable cleaners</div>
+                <div class="benefit-item" data-en="✓ Attention to detail on every job" data-nl="✓ Aandacht voor detail bij elke klus">✓ Attention to detail on every job</div>
+                <div class="benefit-item" data-en="✓ Friendly, professional service" data-nl="✓ Vriendelijke, professionele service">✓ Friendly, professional service</div>
+                <div class="benefit-item" data-en="✓ Competitive pricing with no surprises" data-nl="✓ Concurrerende prijzen zonder verrassingen">✓ Competitive pricing with no surprises</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-en="Ready for a Spotless Space?" data-nl="Klaar voor een Kraakhelder Ruimte?">Ready for a Spotless Space?</h2>
+                <p data-en="Get your personalized quote in under 2 minutes. No commitment required. Our team responds within 1 hour during business hours." data-nl="Ontvang uw persoonlijke offerte in minder dan 2 minuten. Geen verplichtingen. Ons team reageert binnen 1 uur tijdens kantooruren.">Get your personalized quote in under 2 minutes. No commitment required. Our team responds within 1 hour during business hours.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/31612345678?text=Hi%2C%20I%27m%20interested%20in%20a%20cleaning%20service.%20I%27d%20like%20to%20get%20a%20quote%2C%20please." class="btn-whatsapp" target="_blank">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span data-en="Message Us on WhatsApp" data-nl="Stuur Bericht via WhatsApp">Message Us on WhatsApp</span>
+                    </a>
+                    <a href="tel:+31612345678" class="btn-call">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                        <span data-en="Call: +31 6 1234 5678" data-nl="Bel: +31 6 1234 5678">Call: +31 6 1234 5678</span>
+                    </a>
+                </div>
+                <p class="urgency-text" data-en="⚡ Limited slots available this week — Book now to secure your spot!" data-nl="⚡ Beperkte beschikbaarheid deze week — Boek nu om uw plek te reserveren!">⚡ Limited slots available this week — Book now to secure your spot!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>SparkleClean</strong> | <span data-en="Professional Cleaning Services" data-nl="Professionele Schoonmaakdiensten">Professional Cleaning Services</span></p>
+            <p data-en="Serving The Hague and surrounding areas" data-nl="Actief in Den Haag en omstreken">Serving The Hague and surrounding areas</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;" data-en="Demo website — Replace with your actual contact details" data-nl="Demo website — Vervang met uw eigen contactgegevens">Demo website — Replace with your actual contact details</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-nl').classList.toggle('active', lang === 'nl');
+            
+            // Update all translatable elements
+            const elements = document.querySelectorAll('[data-en][data-nl]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
